@@ -388,6 +388,7 @@ namespace TrashCollector.Controllers
                 AddErrors(result);
             }
 
+            // TODO: if user is admin send them to /users/index
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
