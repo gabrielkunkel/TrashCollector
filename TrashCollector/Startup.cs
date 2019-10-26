@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
 using TrashCollector.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 [assembly: OwinStartupAttribute(typeof(TrashCollector.Startup))]
 namespace TrashCollector
@@ -40,7 +40,7 @@ namespace TrashCollector
 
             }
 
-            if(roleManager.RoleExists("Customer") == false)
+            if (roleManager.RoleExists("Customer") == false)
             {
                 var role = new IdentityRole();
                 role.Name = "Customer";
