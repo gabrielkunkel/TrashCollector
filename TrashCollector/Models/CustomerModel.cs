@@ -4,6 +4,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TrashCollector.Models
 {
+    public enum CustomerStatus
+    {
+        Active,
+        Suspended,
+        Canceled,
+        Blacklisted,
+        Priority
+    }
+
     public class CustomerModel
     {
         [Key]
@@ -18,7 +27,7 @@ namespace TrashCollector.Models
         public string LastName { get; set; }
 
         [Display(Name = "Status")]
-        public string Status { get; set; }
+        public CustomerStatus Status { get; set; }
 
         [Display(Name = "Weekly Pick-Up Day")]
         public DayOfWeek PickUpDay { get; set; }

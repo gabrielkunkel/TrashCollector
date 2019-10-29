@@ -168,9 +168,8 @@ namespace TrashCollector.Controllers
 
                     return RedirectToAction("Index", "Users");
                 }
-                ViewBag.Name = new SelectList(dbContext.Roles.Where(u => !u.Name.Contains("Admin"))
+                ViewBag.Name = new SelectList(dbContext.Roles
                                       .ToList(), "Name", "Name");
-
 
                 AddErrors(result);
             }

@@ -22,7 +22,7 @@ namespace TrashCollector.Models
         public string City { get; set; }
 
         [Display(Name = "State")]
-        public string State { get; set; }
+        public USState State { get; set; }
 
         [Display(Name = "Zip Code")]
         public string ZipCode { get; set; }
