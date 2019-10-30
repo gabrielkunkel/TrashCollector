@@ -195,7 +195,23 @@ namespace TrashCollector.Controllers
 
 
         // POST: /Account/RegisterCustomer
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterCustomer(RegisterCustomerViewModel model)
+        {
+            var address = new AddressModel
+            {
+                StreetAddress = model.StreetAddress,
+                SecondaryAddress = model.SecondaryAddress,
+                City = model.City,
+                ZipCode = model.ZipCode,
+                State = model.State
+            };
 
+            var result = dbContext.Addresses.Add(address);
+
+            return View();
+        }
 
         //
         // GET: /Account/ConfirmEmail
