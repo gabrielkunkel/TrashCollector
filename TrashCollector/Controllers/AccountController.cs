@@ -188,7 +188,7 @@ namespace TrashCollector.Controllers
         [HttpGet]
         public ActionResult RegisterCustomer()
         {
-            Guid userId = Guid.Parse(Request.QueryString["Id"]);
+            string userId = Request.QueryString["Id"];
             var model = new RegisterCustomerViewModel();
             model.ApplicationId = userId;
 
@@ -212,6 +212,22 @@ namespace TrashCollector.Controllers
             };
 
             dbContext.Addresses.Add(address);
+            
+
+            var customer = new CustomerModel
+            {
+                CustomerId = Guid.NewGuid(),
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Status = 0,
+                PickUpDay = 0,
+                BaseCost = model.BaseCost,
+                ApplicationId = model.ApplicationId,
+                AddressId = address.AddressId
+            };
+
+            dbContext.Customers.Add(customer);
+
             dbContext.SaveChanges();
 
             return View();

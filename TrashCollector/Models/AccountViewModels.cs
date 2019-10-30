@@ -125,7 +125,7 @@ namespace TrashCollector.Models
         public string ZipCode { get; set; }
 
         [ForeignKey("ApplicationUser")]
-        public Guid ApplicationId { get; set; }
+        public string ApplicationId { get; set; }
     }
 
     public class ResetPasswordViewModel
