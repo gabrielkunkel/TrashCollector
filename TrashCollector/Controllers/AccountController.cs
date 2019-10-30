@@ -72,6 +72,8 @@ namespace TrashCollector.Controllers
             {
                 return View(model);
             }
+            
+
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
@@ -89,6 +91,11 @@ namespace TrashCollector.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
+        }
+
+        private ActionResult LoginRedirectProcess(LoginViewModel model)
+        {
+            return RedirectToAction("details", "Customer");
         }
 
         //

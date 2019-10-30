@@ -24,9 +24,11 @@ namespace TrashCollector.Controllers
         }
 
         // GET: Customer/Details/5
-        public ActionResult Details(string id)
+        // [Authorize(Roles = "Customer")]
+        public ActionResult Details(string Id)
         {
-            var model = dbContext.Customers.Find(Guid.Parse(id));
+            var model = dbContext.Customers.Find(Guid.Parse(Id));
+            dbContext.Entry(model).Reference(a => a.Address).Load();
 
             return View(model);
         }

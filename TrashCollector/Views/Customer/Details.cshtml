@@ -35,20 +35,37 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ApplicationId)
+            @Html.DisplayNameFor(model => model.Address.StreetAddress)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ApplicationId)
+            @Html.DisplayFor(model => model.Address.StreetAddress)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AddressId)
+            @Html.DisplayNameFor(model => model.Address.SecondaryAddress)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AddressId)
+            @Html.DisplayFor(model => model.Address.SecondaryAddress)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.ZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.ZipCode)
+        </dd>
+
 
     </dl>
 </div>
