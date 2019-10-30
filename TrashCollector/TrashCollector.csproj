@@ -187,6 +187,14 @@
     <Compile Include="Migrations\201910301310567_roleErrorSolution.Designer.cs">
       <DependentUpon>201910301310567_roleErrorSolution.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910301542453_guidAddress.cs" />
+    <Compile Include="Migrations\201910301542453_guidAddress.Designer.cs">
+      <DependentUpon>201910301542453_guidAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910301550164_removeDatabaseMadeGuid.cs" />
+    <Compile Include="Migrations\201910301550164_removeDatabaseMadeGuid.Designer.cs">
+      <DependentUpon>201910301550164_removeDatabaseMadeGuid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddressModel.cs" />
@@ -285,6 +293,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910301310567_roleErrorSolution.resx">
       <DependentUpon>201910301310567_roleErrorSolution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301542453_guidAddress.resx">
+      <DependentUpon>201910301542453_guidAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301550164_removeDatabaseMadeGuid.resx">
+      <DependentUpon>201910301550164_removeDatabaseMadeGuid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

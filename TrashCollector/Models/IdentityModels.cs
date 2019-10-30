@@ -20,7 +20,7 @@ namespace TrashCollector.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<CustomerModel> Customers {get; set;}
+        public DbSet<CustomerModel> Customers { get; set; }
         public DbSet<EmployeeModel> Employees { get; set; }
         public DbSet<PickUpModel> PickUps { get; set; }
         public DbSet<AddressModel> Addresses { get; set; }

@@ -1,8 +1,7 @@
 namespace TrashCollector.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class roleErrorSolution : DbMigration
     {
         public override void Up()
@@ -10,7 +9,7 @@ namespace TrashCollector.Migrations
             AlterColumn("dbo.AddressModels", "State", c => c.Int(nullable: false));
             AlterColumn("dbo.CustomerModels", "Status", c => c.Int(nullable: false));
         }
-        
+
         public override void Down()
         {
             AlterColumn("dbo.CustomerModels", "Status", c => c.String());

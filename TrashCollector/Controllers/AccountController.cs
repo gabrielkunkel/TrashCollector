@@ -80,7 +80,7 @@ namespace TrashCollector.Controllers
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut: 
+                case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
@@ -185,10 +185,12 @@ namespace TrashCollector.Controllers
         }
 
         // GET: /Account/RegisterCustomer
-        public ActionResult RegisterCustomer(string UserId)
+        [HttpGet]
+        public ActionResult RegisterCustomer()
         {
+            Guid userId = Guid.Parse(Request.QueryString["Id"]);
             var model = new RegisterCustomerViewModel();
-            model.ApplicationId = UserId;
+            model.ApplicationId = userId;
 
             return View(model);
         }
@@ -201,6 +203,7 @@ namespace TrashCollector.Controllers
         {
             var address = new AddressModel
             {
+                AddressId = Guid.NewGuid(),
                 StreetAddress = model.StreetAddress,
                 SecondaryAddress = model.SecondaryAddress,
                 City = model.City,
@@ -208,7 +211,8 @@ namespace TrashCollector.Controllers
                 State = model.State
             };
 
-            var result = dbContext.Addresses.Add(address);
+            dbContext.Addresses.Add(address);
+            dbContext.SaveChanges();
 
             return View();
         }
