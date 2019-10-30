@@ -21,7 +21,7 @@ namespace TrashCollector
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(dbContext));
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbContext));
 
-            if (roleManager.RoleExists("Admin") == false)
+            if (!roleManager.RoleExists("Admin"))
             {
                 var role = new IdentityRole();
                 role.Name = "Admin";

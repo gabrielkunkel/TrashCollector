@@ -183,6 +183,10 @@
     <Compile Include="Migrations\201910291907571_second.Designer.cs">
       <DependentUpon>201910291907571_second.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910301310567_roleErrorSolution.cs" />
+    <Compile Include="Migrations\201910301310567_roleErrorSolution.Designer.cs">
+      <DependentUpon>201910301310567_roleErrorSolution.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddressModel.cs" />
@@ -277,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910291907571_second.resx">
       <DependentUpon>201910291907571_second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301310567_roleErrorSolution.resx">
+      <DependentUpon>201910301310567_roleErrorSolution.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

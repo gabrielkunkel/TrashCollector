@@ -166,6 +166,11 @@ namespace TrashCollector.Controllers
 
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
 
+                    if (model.UserRoles == "Customer")
+                    {
+                        return RedirectToAction("RegisterCustomer", "Account");
+                    }
+
                     return RedirectToAction("Index", "Users");
                 }
                 ViewBag.Name = new SelectList(dbContext.Roles
@@ -177,6 +182,7 @@ namespace TrashCollector.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
 
         //
         // GET: /Account/ConfirmEmail
