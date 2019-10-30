@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TrashCollector.Models
 {
@@ -122,6 +123,9 @@ namespace TrashCollector.Models
 
         [Display(Name = "Zip Code")]
         public string ZipCode { get; set; }
+
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationId { get; set; }
     }
 
     public class ResetPasswordViewModel

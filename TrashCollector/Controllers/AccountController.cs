@@ -185,6 +185,13 @@ namespace TrashCollector.Controllers
         }
 
         // GET: /Account/RegisterCustomer
+        public ActionResult RegisterCustomer(string UserId)
+        {
+            var model = new RegisterCustomerViewModel();
+            model.ApplicationId = UserId;
+
+            return View(model);
+        }
 
 
         // POST: /Account/RegisterCustomer
