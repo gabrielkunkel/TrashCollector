@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -168,7 +169,7 @@ namespace TrashCollector.Controllers
 
                     if (model.UserRoles == "Customer")
                     {
-                        return RedirectToAction("RegisterCustomer", "Account");
+                        return RedirectToAction("RegisterCustomer", "Account", new { Id = user.Id });
                     }
 
                     return RedirectToAction("Index", "Users");
@@ -182,6 +183,11 @@ namespace TrashCollector.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        // GET: /Account/RegisterCustomer
+
+
+        // POST: /Account/RegisterCustomer
 
 
         //
