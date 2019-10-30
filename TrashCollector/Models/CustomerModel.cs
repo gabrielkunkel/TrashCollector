@@ -4,15 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TrashCollector.Models
 {
-    public enum CustomerStatus
-    {
-        Active,
-        Suspended,
-        Canceled,
-        Blacklisted,
-        Priority
-    }
-
     public class CustomerModel
     {
         [Key]

@@ -230,7 +230,7 @@ namespace TrashCollector.Controllers
 
             dbContext.SaveChanges();
 
-            return View();
+            return RedirectToAction("Details", "Customer", new { Id = customer.CustomerId });
         }
 
         //
