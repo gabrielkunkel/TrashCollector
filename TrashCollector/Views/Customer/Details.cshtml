@@ -26,6 +26,16 @@
             @Html.DisplayFor(model => model.LastName)
         </dd>
 
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickUpDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickUpDay)
+        </dd>
+
+
         <dt>
             @Html.DisplayNameFor(model => model.BaseCost)
         </dt>
@@ -68,4 +78,7 @@
 
 
     </dl>
+
+    @Html.ActionLink("Edit My Pick-Up Day", "EditPickUp", new { Id = Model.CustomerId })
+
 </div>

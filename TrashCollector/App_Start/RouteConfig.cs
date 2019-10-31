@@ -10,6 +10,12 @@ namespace TrashCollector
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "EditPickUp",
+                url: "Customer/EditPickUp",
+                defaults: new { controller = "Customer", action = "EditPickUp" }
+);
+
+            routes.MapRoute(
                  name: "RegisterCustomer",
                  url: "Account/RegisterCustomer/",
                  defaults: new { controller = "Account", action = "RegisterCustomer" }

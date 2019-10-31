@@ -31,9 +31,10 @@ namespace TrashCollector.Controllers
         }
 
         // GET: Customer/Create
-        public ActionResult Create()
+        public ActionResult Create(string Id)
         {
-            return View();
+            var model = dbContext.Customers.Find(Guid.Parse(Id));
+            return View(model);
         }
 
         // POST: Customer/Create
@@ -53,20 +54,24 @@ namespace TrashCollector.Controllers
         }
 
         // GET: Customer/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditPickUp(string Id)
         {
-            return View();
+            var model = dbContext.Customers.Find(Guid.Parse(Id));
+            return View(model);
         }
 
         // POST: Customer/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditPickUp(string Id, CustomerModel updateCustomer)
         {
             try
             {
-                // TODO: Add update logic here
+                var model = dbContext.Customers.Find(Guid.Parse(Id));
+                model.PickUpDay = updateCustomer.PickUpDay;
+                dbContext.SaveChanges();
 
-                return RedirectToAction("Index");
+                // todo: add customer id to details redirect
+                return RedirectToAction("Details", new { Id = model.CustomerId });
             }
             catch
             {
