@@ -242,9 +242,12 @@ namespace TrashCollector.Controllers
 
             for (int i = 1; i < 8; i++)
             {
-                if (DateTimeOffset.UtcNow.ToLocalTime().AddDays(i).DayOfWeek == model.PickUpDay)
+                DayOfWeek dayOfWeek = DateTimeOffset.UtcNow.ToLocalTime().AddDays(i).DayOfWeek;
+
+                if (dayOfWeek == model.PickUpDay)
                 {
                     pickUp.Scheduled = DateTimeOffset.UtcNow.ToLocalTime().AddDays(i).UtcDateTime;
+                    break;
                 }
             }
 
