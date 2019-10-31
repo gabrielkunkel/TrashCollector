@@ -230,6 +230,26 @@ namespace TrashCollector.Controllers
 
             dbContext.Customers.Add(customer);
 
+            var pickUp = new PickUpModel
+            {
+                PickUpId = Guid.NewGuid(),
+                Pending = true,
+                Completed = false,
+                Recurring = true,
+                Cost = model.BaseCost,
+                CustomerId = customer.CustomerId
+            };
+
+            for (int i = 1; i < 8; i++)
+            {
+                if (DateTimeOffset.UtcNow.ToLocalTime().AddDays(i).DayOfWeek == model.PickUpDay)
+                {
+                    pickUp.Scheduled = DateTimeOffset.UtcNow.ToLocalTime().AddDays(i).UtcDateTime;
+                }
+            }
+
+            dbContext.PickUps.Add(pickUp);
+
             dbContext.SaveChanges();
 
             return RedirectToAction("Details", "Customer", new { Id = customer.CustomerId });

@@ -12,8 +12,14 @@ namespace TrashCollector.Models
         [Display(Name = "Scheduled Date")]
         public DateTime Scheduled { get; set; }
 
-        [Display(Name = "Status")]
-        public string Status { get; set; }
+        [Display(Name = "Pending")]
+        public bool Pending { get; set; }
+
+        [Display(Name = "Completed")]
+        public bool Completed { get; set; }
+
+        [Display(Name = "Recurring")]
+        public bool Recurring { get; set; }
 
         [Display(Name = "Cost")]
         public decimal Cost { get; set; }

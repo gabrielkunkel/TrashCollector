@@ -196,6 +196,18 @@
     <Compile Include="Migrations\201910301550164_removeDatabaseMadeGuid.Designer.cs">
       <DependentUpon>201910301550164_removeDatabaseMadeGuid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910311455546_UpdatePickUpModel.cs" />
+    <Compile Include="Migrations\201910311455546_UpdatePickUpModel.Designer.cs">
+      <DependentUpon>201910311455546_UpdatePickUpModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910311458012_UpdatePickUpModelAgain.cs" />
+    <Compile Include="Migrations\201910311458012_UpdatePickUpModelAgain.Designer.cs">
+      <DependentUpon>201910311458012_UpdatePickUpModelAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910311505043_UpdatePickUpModelThirdTime.cs" />
+    <Compile Include="Migrations\201910311505043_UpdatePickUpModelThirdTime.Designer.cs">
+      <DependentUpon>201910311505043_UpdatePickUpModelThirdTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddressModel.cs" />
@@ -304,6 +316,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910301550164_removeDatabaseMadeGuid.resx">
       <DependentUpon>201910301550164_removeDatabaseMadeGuid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910311455546_UpdatePickUpModel.resx">
+      <DependentUpon>201910311455546_UpdatePickUpModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910311458012_UpdatePickUpModelAgain.resx">
+      <DependentUpon>201910311458012_UpdatePickUpModelAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910311505043_UpdatePickUpModelThirdTime.resx">
+      <DependentUpon>201910311505043_UpdatePickUpModelThirdTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
