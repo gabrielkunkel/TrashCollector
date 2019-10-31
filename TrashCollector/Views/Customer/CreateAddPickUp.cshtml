@@ -1,0 +1,44 @@
+﻿@model TrashCollector.Models.PickUpModel
+
+@{
+    ViewBag.Title = "CreateAddPickUp";
+}
+
+<h2>CreateAddPickUp</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.PickUpId)
+    @Html.HiddenFor(m => m.Pending)
+    @Html.HiddenFor(m => m.Completed)
+    @Html.HiddenFor(m => m.Recurring)
+    @Html.HiddenFor(m => m.Cost)
+    @Html.HiddenFor(m => m.CustomerId)
+
+    <div class="form-horizontal">
+        <h4>PickUpModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Scheduled, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Scheduled, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Scheduled, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+        @Html.ActionLink("Back to My Details", "Details", "Customer", new { Id = Model.CustomerId })
+    </div>

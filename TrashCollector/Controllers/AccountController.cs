@@ -234,7 +234,6 @@ namespace TrashCollector.Controllers
             {
                 PickUpId = Guid.NewGuid(),
                 Pending = true,
-
                 Completed = false,
                 Recurring = true,
                 Cost = model.BaseCost,

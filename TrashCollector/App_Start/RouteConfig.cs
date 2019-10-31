@@ -13,7 +13,7 @@ namespace TrashCollector
                 name: "EditPickUp",
                 url: "Customer/EditPickUp",
                 defaults: new { controller = "Customer", action = "EditPickUp" }
-);
+            );
 
             routes.MapRoute(
                  name: "RegisterCustomer",

@@ -32,21 +32,34 @@ namespace TrashCollector.Controllers
         }
 
         // GET: Customer/Create
-        public ActionResult Create(string Id)
+        public ActionResult CreateAddPickUp(string Id)
         {
-            var model = dbContext.Customers.Find(Guid.Parse(Id));
+            var customerModel = dbContext.Customers.Find(Guid.Parse(Id));
+
+            var model = new PickUpModel
+            {
+                PickUpId = Guid.NewGuid(),
+                Scheduled = DateTimeOffset.UtcNow.ToLocalTime().UtcDateTime,
+                Pending = true,
+                Completed = false,
+                Recurring = false,
+                Cost = customerModel.BaseCost,
+                CustomerId = Guid.Parse(Id)
+            };
+
             return View(model);
         }
 
         // POST: Customer/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult CreateAddPickUp(PickUpModel pickUp)
         {
             try
             {
-                // TODO: Add insert logic here
+                dbContext.PickUps.Add(pickUp);
+                dbContext.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Customer", new { Id = pickUp.CustomerId });
             }
             catch
             {
@@ -73,6 +86,7 @@ namespace TrashCollector.Controllers
                 var pickUp = dbContext.PickUps
                     .Where(pic => pic.Completed == false && pic.CustomerId == model.CustomerId && pic.Recurring == true).FirstOrDefault();
 
+                // todo: consider simplifying this solution with DateTime arithematic
                 for (int i = 1; i < 8; i++)
                 {
                     DayOfWeek dayOfWeek = DateTimeOffset.UtcNow.ToLocalTime().AddDays(i).DayOfWeek;

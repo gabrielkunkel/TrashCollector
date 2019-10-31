@@ -33,5 +33,9 @@
 }
 
 <div>
+    @Html.ActionLink("Create Additional Pick-Up", "CreateAddPickUp", new { Id = Model.CustomerId })
+</div>
+
+<div>
     @Html.ActionLink("Back to My Details", "Details", new { Id = Model.CustomerId })
 </div>

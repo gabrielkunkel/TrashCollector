@@ -284,6 +284,7 @@
     <Content Include="Views\Account\RegisterCustomer.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\EditPickUp.cshtml" />
+    <Content Include="Views\Customer\CreateAddPickUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

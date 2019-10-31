@@ -79,6 +79,12 @@
 
     </dl>
 
-    @Html.ActionLink("Edit My Pick-Up Day", "EditPickUp", new { Id = Model.CustomerId })
+</div>
 
+<div>
+    @Html.ActionLink("Edit My Pick-Up Day", "EditPickUp", new { Id = Model.CustomerId })
+</div>
+
+<div>
+    @Html.ActionLink("Create Additional Pick-Up", "CreateAddPickUp", new { Id = Model.CustomerId })
 </div>

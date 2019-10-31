@@ -9,6 +9,8 @@ namespace TrashCollector.Models
         [Key]
         public Guid PickUpId { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Scheduled Date")]
         public DateTime Scheduled { get; set; }
 
