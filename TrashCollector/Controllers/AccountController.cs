@@ -93,11 +93,6 @@ namespace TrashCollector.Controllers
             }
         }
 
-        private ActionResult LoginRedirectProcess(LoginViewModel model)
-        {
-            return RedirectToAction("details", "Customer");
-        }
-
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -227,7 +222,7 @@ namespace TrashCollector.Controllers
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Status = 0,
-                PickUpDay = 0,
+                PickUpDay = model.PickUpDay,
                 BaseCost = model.BaseCost,
                 ApplicationId = model.ApplicationId,
                 AddressId = address.AddressId
