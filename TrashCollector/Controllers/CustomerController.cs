@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using TrashCollector.Models;
 
@@ -68,9 +69,23 @@ namespace TrashCollector.Controllers
             {
                 var model = dbContext.Customers.Find(Guid.Parse(Id));
                 model.PickUpDay = updateCustomer.PickUpDay;
+
+                var pickUp = dbContext.PickUps
+                    .Where(pic => pic.Completed == false && pic.CustomerId == model.CustomerId && pic.Recurring == true).FirstOrDefault();
+
+                for (int i = 1; i < 8; i++)
+                {
+                    DayOfWeek dayOfWeek = DateTimeOffset.UtcNow.ToLocalTime().AddDays(i).DayOfWeek;
+
+                    if (dayOfWeek == model.PickUpDay)
+                    {
+                        pickUp.Scheduled = DateTimeOffset.UtcNow.ToLocalTime().AddDays(i).UtcDateTime;
+                        break;
+                    }
+                }
+
                 dbContext.SaveChanges();
 
-                // todo: add customer id to details redirect
                 return RedirectToAction("Details", new { Id = model.CustomerId });
             }
             catch

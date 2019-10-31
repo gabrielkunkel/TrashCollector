@@ -234,12 +234,14 @@ namespace TrashCollector.Controllers
             {
                 PickUpId = Guid.NewGuid(),
                 Pending = true,
+
                 Completed = false,
                 Recurring = true,
                 Cost = model.BaseCost,
                 CustomerId = customer.CustomerId
             };
 
+            // todo: move this logic elsewhere (used in CustomerController, as well
             for (int i = 1; i < 8; i++)
             {
                 DayOfWeek dayOfWeek = DateTimeOffset.UtcNow.ToLocalTime().AddDays(i).DayOfWeek;
