@@ -44,6 +44,7 @@ namespace TrashCollector.Controllers
                 Completed = false,
                 Recurring = false,
                 Cost = customerModel.BaseCost,
+                Paid = false,
                 CustomerId = Guid.Parse(Id)
             };
 

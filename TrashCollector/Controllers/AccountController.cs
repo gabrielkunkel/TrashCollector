@@ -237,6 +237,7 @@ namespace TrashCollector.Controllers
                 Completed = false,
                 Recurring = true,
                 Cost = model.BaseCost,
+                Paid = false,
                 CustomerId = customer.CustomerId
             };
 

@@ -16,6 +16,7 @@
     @Html.HiddenFor(m => m.Completed)
     @Html.HiddenFor(m => m.Recurring)
     @Html.HiddenFor(m => m.Cost)
+    @Html.HiddenFor(m => m.Paid)
     @Html.HiddenFor(m => m.CustomerId)
 
     <div class="form-horizontal">
@@ -40,5 +41,5 @@
 }
 
 <div>
-        @Html.ActionLink("Back to My Details", "Details", "Customer", new { Id = Model.CustomerId })
-    </div>
+    @Html.ActionLink("Back to My Details", "Details", "Customer", new { Id = Model.CustomerId })
+</div>

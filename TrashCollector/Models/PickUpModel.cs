@@ -26,6 +26,9 @@ namespace TrashCollector.Models
         [Display(Name = "Cost")]
         public decimal Cost { get; set; }
 
+        [Display(Name = "Paid")]
+        public bool Paid { get; set; }
+
         [ForeignKey("Customer")]
         public Guid CustomerId { get; set; }
         public CustomerModel Customer { get; set; }

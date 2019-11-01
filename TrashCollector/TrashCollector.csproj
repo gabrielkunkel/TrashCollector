@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201910311505043_UpdatePickUpModelThirdTime.Designer.cs">
       <DependentUpon>201910311505043_UpdatePickUpModelThirdTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911010001060_AddPickUpPaid.cs" />
+    <Compile Include="Migrations\201911010001060_AddPickUpPaid.Designer.cs">
+      <DependentUpon>201911010001060_AddPickUpPaid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddressModel.cs" />
@@ -326,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910311505043_UpdatePickUpModelThirdTime.resx">
       <DependentUpon>201910311505043_UpdatePickUpModelThirdTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911010001060_AddPickUpPaid.resx">
+      <DependentUpon>201911010001060_AddPickUpPaid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
