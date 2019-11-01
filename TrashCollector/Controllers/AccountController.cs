@@ -268,10 +268,9 @@ namespace TrashCollector.Controllers
             string userId = Request.QueryString["Id"];
             var model = new EmployeeModel
             {
+                EmployeeId = Guid.NewGuid(),
                 ApplicationId = userId,
-
-            }
-            ;
+            };
 
             return View(model);
         }

@@ -304,6 +304,7 @@
     <Content Include="Views\Customer\CreateAddPickUp.cshtml" />
     <Content Include="Views\Customer\OwesThisMonth.cshtml" />
     <Content Include="Views\Customer\SetSuspension.cshtml" />
+    <Content Include="Views\Account\RegisterEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
