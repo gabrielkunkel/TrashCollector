@@ -47,7 +47,7 @@ namespace TrashCollector.Controllers
                 .Include(p => p.Customer)
                 .Where(p => p.Customer.Address.ZipCode == employee.ZipCode)
                 .Where(p => p.Scheduled == todayDate);
-            return View(pickUps.ToList());
+            return View("Index", pickUps.ToList());
         }
 
         private DateTime GetNextWeekday(DateTime start, DayOfWeek day)

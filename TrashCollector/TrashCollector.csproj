@@ -312,7 +312,6 @@
     <Content Include="Views\PickUpModels\Details.cshtml" />
     <Content Include="Views\PickUpModels\Edit.cshtml" />
     <Content Include="Views\PickUpModels\Index.cshtml" />
-    <Content Include="Views\PickUpModels\IndexByDay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
