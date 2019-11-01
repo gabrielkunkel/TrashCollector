@@ -266,8 +266,12 @@ namespace TrashCollector.Controllers
         public ActionResult RegisterEmployee()
         {
             string userId = Request.QueryString["Id"];
-            var model = new EmployeeModel();
-            model.ApplicationId = userId;
+            var model = new EmployeeModel
+            {
+                ApplicationId = userId,
+
+            }
+            ;
 
             return View(model);
         }
@@ -281,7 +285,7 @@ namespace TrashCollector.Controllers
             dbContext.Employees.Add(model);
             dbContext.SaveChanges();
 
-            return RedirectToAction("WorkList", "Employee", new { Id = model.EmloyeeId });
+            return RedirectToAction("WorkList", "Employee", new { Id = model.EmployeeId });
         }
 
 

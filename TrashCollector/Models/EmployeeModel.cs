@@ -7,7 +7,7 @@ namespace TrashCollector.Models
     public class EmployeeModel
     {
         [Key]
-        public Guid EmloyeeId { get; set; }
+        public Guid EmployeeId { get; set; }
 
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "First name is required.")]

@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201911011644468_AddZipCodeToEmployeeModel.Designer.cs">
       <DependentUpon>201911011644468_AddZipCodeToEmployeeModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911011650184_FixTypoForEmployeeId.cs" />
+    <Compile Include="Migrations\201911011650184_FixTypoForEmployeeId.Designer.cs">
+      <DependentUpon>201911011650184_FixTypoForEmployeeId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddressModel.cs" />
@@ -350,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911011644468_AddZipCodeToEmployeeModel.resx">
       <DependentUpon>201911011644468_AddZipCodeToEmployeeModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911011650184_FixTypoForEmployeeId.resx">
+      <DependentUpon>201911011650184_FixTypoForEmployeeId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
