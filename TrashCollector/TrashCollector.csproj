@@ -232,6 +232,7 @@
     <Compile Include="Models\CustomerStatus.cs" />
     <Compile Include="Models\CustomerViewModels.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
+    <Compile Include="Models\EmployeeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PickUpModel.cs" />
@@ -311,6 +312,7 @@
     <Content Include="Views\PickUpModels\Details.cshtml" />
     <Content Include="Views\PickUpModels\Edit.cshtml" />
     <Content Include="Views\PickUpModels\Index.cshtml" />
+    <Content Include="Views\PickUpModels\IndexByDay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

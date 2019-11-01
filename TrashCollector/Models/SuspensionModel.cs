@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace TrashCollector.Models
 {
@@ -13,7 +10,7 @@ namespace TrashCollector.Models
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display( Name = "First Day of Suspension")]
+        [Display(Name = "First Day of Suspension")]
         public DateTime Start { get; set; }
 
         [DataType(DataType.Date)]

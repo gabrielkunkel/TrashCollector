@@ -72,7 +72,7 @@ namespace TrashCollector.Controllers
             {
                 return View(model);
             }
-            
+
 
 
             // This doesn't count login failures towards account lockout
@@ -217,7 +217,7 @@ namespace TrashCollector.Controllers
             };
 
             dbContext.Addresses.Add(address);
-            
+
 
             var customer = new CustomerModel
             {

@@ -1,8 +1,7 @@
 namespace TrashCollector.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class FixTypoForEmployeeId : DbMigration
     {
         public override void Up()
@@ -12,7 +11,7 @@ namespace TrashCollector.Migrations
             AddPrimaryKey("dbo.EmployeeModels", "EmployeeId");
             DropColumn("dbo.EmployeeModels", "EmloyeeId");
         }
-        
+
         public override void Down()
         {
             AddColumn("dbo.EmployeeModels", "EmloyeeId", c => c.Guid(nullable: false));

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TrashCollector.Models;
 
@@ -30,6 +29,39 @@ namespace TrashCollector.Controllers
                 .Where(p => p.Scheduled == todayDate);
             return View(pickUps.ToList());
         }
+
+        // GET: IndexByDay
+        public ActionResult IndexByDay()
+        {
+            var userId = User.Identity.GetUserId();
+
+            EmployeeModel employee = db.Employees
+                .Where(emp => emp.ApplicationId == userId)
+                .FirstOrDefault();
+
+            string day = Request.QueryString["day"] ?? "Sunday";
+            DayOfWeek dayForSort = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), day, true);
+            DateTime todayDate = GetNextWeekday(DateTime.Today, dayForSort);
+
+            var pickUps = db.PickUps
+                .Include(p => p.Customer)
+                .Where(p => p.Customer.Address.ZipCode == employee.ZipCode)
+                .Where(p => p.Scheduled == todayDate);
+            return View(pickUps.ToList());
+        }
+
+        private DateTime GetNextWeekday(DateTime start, DayOfWeek day)
+        {
+            int daysToAdd = ((int)day - (int)start.DayOfWeek + 7) % 7;
+            return start.AddDays(daysToAdd);
+        }
+
+        // todo: add a query string after Id string with todayDate set to chosen day
+
+        // todo: add action links for each day
+
+
+
 
         // GET: PickUpModels/Details/5
         public ActionResult Details(Guid? id)

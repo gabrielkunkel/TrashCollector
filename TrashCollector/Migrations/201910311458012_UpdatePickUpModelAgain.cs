@@ -1,8 +1,7 @@
 namespace TrashCollector.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class UpdatePickUpModelAgain : DbMigration
     {
         public override void Up()
@@ -11,7 +10,7 @@ namespace TrashCollector.Migrations
             AddColumn("dbo.PickUpModels", "Completed", c => c.Boolean(nullable: false));
             DropColumn("dbo.PickUpModels", "Status");
         }
-        
+
         public override void Down()
         {
             AddColumn("dbo.PickUpModels", "Status", c => c.Boolean(nullable: false));

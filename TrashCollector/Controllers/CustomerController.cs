@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
 using TrashCollector.Models;
@@ -175,7 +174,7 @@ namespace TrashCollector.Controllers
             Guid customerId = Guid.Parse(Id);
 
             dbContext.Suspensions.Add(suspension);
-   
+
             // get all suspensions for current customer
             // todo: convert this into a separate utility function that can be used elsewhere
             // todo: optimization: weed out suspensions that ended in the past
@@ -206,7 +205,7 @@ namespace TrashCollector.Controllers
         {
             foreach (SuspensionModel suspension in suspensions)
             {
-                if(pickUp.Scheduled > suspension.Start && pickUp.Scheduled < suspension.End)
+                if (pickUp.Scheduled > suspension.Start && pickUp.Scheduled < suspension.End)
                 {
                     pickUp.Scheduled = DetermineNextAvailablePickUpDay(pickUp, suspension.End);
                 }
