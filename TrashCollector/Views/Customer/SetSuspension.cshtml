@@ -1,0 +1,49 @@
+﻿@model TrashCollector.Models.SuspensionModel
+
+@{
+    ViewBag.Title = "SetSuspension";
+}
+
+<h2>Set a Period to Suspend Your Service</h2>
+
+@Html.HiddenFor(model => model.CustomerId)
+@Html.HiddenFor(model => model.SuspensionId)
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>SuspensionModel</h4>
+        <h6>
+            Additionally scheduled pickup days, other than you're recurring day are not effected by this suspension.
+        </h6>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Start, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Start, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Start, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.End, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.End, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.End, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Back to My Details", "Details", new { Id = Model.CustomerId })
+</p>

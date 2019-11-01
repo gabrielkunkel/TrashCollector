@@ -155,26 +155,26 @@ namespace TrashCollector.Controllers
             return count;
         }
 
-        // GET: Customer/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult SetSuspension(string Id)
         {
-            return View();
+            SuspensionModel suspension = new SuspensionModel
+            {
+                SuspensionId = Guid.NewGuid(),
+                Start = DateTime.Today,
+                End = DateTime.Today.AddDays(1),
+                CustomerId = Guid.Parse(Id)
+            };
+
+            return View(suspension);
         }
 
-        // POST: Customer/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult SetSuspension(string Id, SuspensionModel suspension)
         {
-            try
-            {
-                // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(suspension);
         }
+
+
     }
 }

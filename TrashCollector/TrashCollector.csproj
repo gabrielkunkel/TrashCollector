@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201911010001060_AddPickUpPaid.Designer.cs">
       <DependentUpon>201911010001060_AddPickUpPaid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911011339549_SuspensionsModel.cs" />
+    <Compile Include="Migrations\201911011339549_SuspensionsModel.Designer.cs">
+      <DependentUpon>201911011339549_SuspensionsModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddressModel.cs" />
@@ -222,6 +226,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PickUpModel.cs" />
+    <Compile Include="Models\SuspensionModel.cs" />
     <Compile Include="Models\USState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -290,6 +295,7 @@
     <Content Include="Views\Customer\EditPickUp.cshtml" />
     <Content Include="Views\Customer\CreateAddPickUp.cshtml" />
     <Content Include="Views\Customer\OwesThisMonth.cshtml" />
+    <Content Include="Views\Customer\SetSuspension.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -334,6 +340,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911010001060_AddPickUpPaid.resx">
       <DependentUpon>201911010001060_AddPickUpPaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911011339549_SuspensionsModel.resx">
+      <DependentUpon>201911011339549_SuspensionsModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
