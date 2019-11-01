@@ -17,6 +17,9 @@ namespace TrashCollector.Models
         [Required(ErrorMessage = "Last name is required.")]
         public string LastName { get; set; }
 
+        [Display(Name = "Zip Code")]
+        public string ZipCode { get; set; }
+
         [ForeignKey("ApplicationUser")]
         public string ApplicationId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }

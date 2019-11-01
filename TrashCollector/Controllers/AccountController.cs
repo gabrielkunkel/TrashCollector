@@ -260,6 +260,31 @@ namespace TrashCollector.Controllers
             return RedirectToAction("Details", "Customer", new { Id = customer.CustomerId });
         }
 
+
+        // GET: /Account/RegisterCustomer
+        [HttpGet]
+        public ActionResult RegisterEmployee()
+        {
+            string userId = Request.QueryString["Id"];
+            var model = new EmployeeModel();
+            model.ApplicationId = userId;
+
+            return View(model);
+        }
+
+
+        // POST: /Account/RegisterCustomer
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterEmployee(EmployeeModel model)
+        {
+            dbContext.Employees.Add(model);
+            dbContext.SaveChanges();
+
+            return RedirectToAction("WorkList", "Employee", new { Id = model.EmloyeeId });
+        }
+
+
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
