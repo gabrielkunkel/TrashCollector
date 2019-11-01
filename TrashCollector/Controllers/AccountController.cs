@@ -201,7 +201,6 @@ namespace TrashCollector.Controllers
             return View(model);
         }
 
-
         // POST: /Account/RegisterCustomer
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -288,7 +287,7 @@ namespace TrashCollector.Controllers
             dbContext.Employees.Add(model);
             dbContext.SaveChanges();
 
-            return RedirectToAction("WorkList", "Employee", new { Id = model.EmployeeId });
+            return RedirectToAction("Index", "PickUpModels", new { Id = model.EmployeeId });
         }
 
 

@@ -1,0 +1,82 @@
+﻿@model TrashCollector.Models.PickUpModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>PickUpModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.FirstName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Customer.FirstName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Scheduled)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Scheduled)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Pending)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Pending)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Completed)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Completed)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Recurring)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Recurring)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Cost)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Cost)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Paid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Paid)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PickUpId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

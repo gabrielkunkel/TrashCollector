@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TrashCollector.Models.PickUpModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Today's Pick-Ups</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Scheduled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pending)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Completed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Recurring)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paid)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Scheduled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pending)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Completed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recurring)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paid)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PickUpId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PickUpId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PickUpId })
+        </td>
+    </tr>
+}
+
+</table>

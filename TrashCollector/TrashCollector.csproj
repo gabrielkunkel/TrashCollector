@@ -171,6 +171,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PickUpModelsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -305,6 +306,11 @@
     <Content Include="Views\Customer\OwesThisMonth.cshtml" />
     <Content Include="Views\Customer\SetSuspension.cshtml" />
     <Content Include="Views\Account\RegisterEmployee.cshtml" />
+    <Content Include="Views\PickUpModels\Create.cshtml" />
+    <Content Include="Views\PickUpModels\Delete.cshtml" />
+    <Content Include="Views\PickUpModels\Details.cshtml" />
+    <Content Include="Views\PickUpModels\Edit.cshtml" />
+    <Content Include="Views\PickUpModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
