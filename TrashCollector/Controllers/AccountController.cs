@@ -261,7 +261,7 @@ namespace TrashCollector.Controllers
         }
 
 
-        // GET: /Account/RegisterCustomer
+        // GET: /Account/RegisterEmployee
         [HttpGet]
         public ActionResult RegisterEmployee()
         {
@@ -273,7 +273,7 @@ namespace TrashCollector.Controllers
         }
 
 
-        // POST: /Account/RegisterCustomer
+        // POST: /Account/RegisterEmployee
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult RegisterEmployee(EmployeeModel model)

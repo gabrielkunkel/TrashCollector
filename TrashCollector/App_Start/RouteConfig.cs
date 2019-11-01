@@ -16,6 +16,12 @@ namespace TrashCollector
             );
 
             routes.MapRoute(
+                 name: "RegisterEmployee",
+                 url: "Account/RegisterEmployee/",
+                 defaults: new { controller = "Account", action = "RegisterEmployee" }
+);
+
+            routes.MapRoute(
                  name: "RegisterCustomer",
                  url: "Account/RegisterCustomer/",
                  defaults: new { controller = "Account", action = "RegisterCustomer" }
