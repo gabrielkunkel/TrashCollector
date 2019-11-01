@@ -173,6 +173,10 @@ namespace TrashCollector.Controllers
                     {
                         return RedirectToAction("RegisterCustomer", "Account", new { Id = user.Id });
                     }
+                    else if (model.UserRoles == "Employee")
+                    {
+                        return RedirectToAction("RegisterEmployee", "Account", new { Id = user.Id });
+                    }
 
                     return RedirectToAction("Index", "Users");
                 }
