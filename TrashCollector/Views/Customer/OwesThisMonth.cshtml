@@ -1,0 +1,26 @@
+﻿@model TrashCollector.Models.CustomerOwesForThisMonthViewModel
+
+@{
+    ViewBag.Title = "OwesThisMonth";
+}
+
+<h2>You'll Owe For This Month</h2>
+
+@Html.HiddenFor(model => model.CustomerId)
+<div>
+    <h4>CustomerOwesForThisMonthViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OwesThisMonth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwesThisMonth)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to My Details", "Details", new { Id = Model.CustomerId })
+</p>
