@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
@@ -171,10 +172,63 @@ namespace TrashCollector.Controllers
         [HttpPost]
         public ActionResult SetSuspension(string Id, SuspensionModel suspension)
         {
+            Guid customerId = Guid.Parse(Id);
 
-            return View(suspension);
+            dbContext.Suspensions.Add(suspension);
+   
+            // get all suspensions for current customer
+            // todo: convert this into a separate utility function that can be used elsewhere
+            // todo: optimization: weed out suspensions that ended in the past
+            List<SuspensionModel> suspensions = dbContext.Suspensions
+                .Where(sus => sus.CustomerId == customerId)
+                .OrderBy(sus => sus.Start)
+                .ToList();
+            suspensions.Add(suspension);
+
+            // get next recurring pickup day
+            PickUpModel pickUp = dbContext.PickUps
+                .Where(pick => pick.CustomerId == customerId && pick.Recurring == true && pick.Completed == false)
+                .FirstOrDefault();
+
+            // check that the recurring date conforms to all suspensions
+            DetermineNextPickUpDay(suspensions, ref pickUp);
+
+
+
+            dbContext.SaveChanges();
+
+            return RedirectToAction("Details", new { Id = customerId });
         }
 
+        // private UpdatePickUpsForSuspensions CustomerId, new suspension dbContext
 
+        private void DetermineNextPickUpDay(List<SuspensionModel> suspensions, ref PickUpModel pickUp)
+        {
+            foreach (SuspensionModel suspension in suspensions)
+            {
+                if(pickUp.Scheduled > suspension.Start && pickUp.Scheduled < suspension.End)
+                {
+                    pickUp.Scheduled = DetermineNextAvailablePickUpDay(pickUp, suspension.End);
+                }
+            }
+        }
+
+        private DateTime DetermineNextAvailablePickUpDay(PickUpModel pickUp, DateTime startSearch)
+        {
+            DayOfWeek currentDayOfWeekPickUp = pickUp.Scheduled.DayOfWeek;
+
+            for (int i = 2; i < 8; i++)
+            {
+                DayOfWeek dayOfWeekToCheck = startSearch.ToLocalTime().AddDays(i).DayOfWeek;
+
+                if (dayOfWeekToCheck == currentDayOfWeekPickUp)
+                {
+                    pickUp.Scheduled = startSearch.ToLocalTime().AddDays(i);
+                    break;
+                }
+            }
+
+            return pickUp.Scheduled;
+        }
     }
 }

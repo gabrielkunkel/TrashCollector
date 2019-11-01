@@ -6,12 +6,11 @@
 
 <h2>Set a Period to Suspend Your Service</h2>
 
-@Html.HiddenFor(model => model.CustomerId)
-@Html.HiddenFor(model => model.SuspensionId)
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.CustomerId)
+    @Html.HiddenFor(model => model.SuspensionId)
 
     <div class="form-horizontal">
         <h4>SuspensionModel</h4>
