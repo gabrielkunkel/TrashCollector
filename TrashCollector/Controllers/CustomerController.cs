@@ -25,12 +25,12 @@ namespace TrashCollector.Controllers
 
         // GET: Customer/Details/5
         // [Authorize(Roles = "Customer")]
-        public ActionResult Details(string Id)
+        public ActionResult Details()
         {
             var userId = User.Identity.GetUserId();
 
             CustomerModel customer = dbContext.Customers
-                .Where(emp => emp.ApplicationId == userId)
+                .Where(cust => cust.ApplicationId == userId)
                 .SingleOrDefault();
 
             var model = dbContext.Customers.Find(customer.CustomerId);

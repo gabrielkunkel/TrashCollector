@@ -27,8 +27,9 @@ namespace TrashCollector.Controllers
             var pickUps = db.PickUps
                 .Include(p => p.Customer)
                 .Where(p => p.Customer.Address.ZipCode == employee.ZipCode)
-                .Where(p => p.Scheduled == todayDate);
-            return View(pickUps.ToList());
+                .Where(p => p.Scheduled == todayDate)
+                .ToList();
+            return View(pickUps);
         }
 
         // GET: IndexByDay
@@ -46,9 +47,11 @@ namespace TrashCollector.Controllers
 
             var pickUps = db.PickUps
                 .Include(p => p.Customer)
+                .Include(p => p.Customer.Address)
                 .Where(p => p.Customer.Address.ZipCode == employee.ZipCode)
-                .Where(p => p.Scheduled == todayDate);
-            return View("Index", pickUps.ToList());
+                .Where(p => p.Scheduled == todayDate)
+                .ToList();
+            return View("Index", pickUps);
         }
 
         private DateTime GetNextWeekday(DateTime start, DayOfWeek day)
