@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -26,7 +27,13 @@ namespace TrashCollector.Controllers
         // [Authorize(Roles = "Customer")]
         public ActionResult Details(string Id)
         {
-            var model = dbContext.Customers.Find(Guid.Parse(Id));
+            var userId = User.Identity.GetUserId();
+
+            CustomerModel customer = dbContext.Customers
+                .Where(emp => emp.ApplicationId == userId)
+                .SingleOrDefault();
+
+            var model = dbContext.Customers.Find(customer.CustomerId);
             dbContext.Entry(model).Reference(a => a.Address).Load();
 
             return View(model);
@@ -114,23 +121,48 @@ namespace TrashCollector.Controllers
         {
             var customer = dbContext.Customers.Find(Guid.Parse(Id));
 
-            DateTime firstPickUpDayForThisMonthSubtractOne = dbContext.PickUps
+            DateTime firstPickUpDayForThisMonth = dbContext.PickUps
                 .Where(pick => pick.CustomerId == customer.CustomerId && pick.Recurring == true && pick.Scheduled.Month == DateTime.Now.Month)
                 .OrderBy(pick => pick.Scheduled)
                 .Select(pick => pick.Scheduled)
-                .FirstOrDefault()
-                .AddDays(-1);
+                .FirstOrDefault();
+
+            DateTime firstPickUpDayForThisMonthSubtractOne = firstPickUpDayForThisMonth;
+
             DateTime lastDayOfMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month));
 
             int daysToChargeFor = CountDays(customer.PickUpDay, firstPickUpDayForThisMonthSubtractOne, lastDayOfMonth);
 
             decimal amountForRecurring = daysToChargeFor * customer.BaseCost;
 
-            decimal totalForAdditional = dbContext.PickUps
-                .Where(pick => pick.CustomerId == customer.CustomerId && pick.Recurring == false && pick.Scheduled.Month == DateTime.Now.Month)
-                .Sum(pick => pick.Cost);
+            decimal totalForAdditional;
+
+            try
+            {
+                totalForAdditional = dbContext.PickUps
+                        .Where(pick => pick.CustomerId == customer.CustomerId && pick.Recurring == false && pick.Scheduled.Month == DateTime.Now.Month)
+                        .Sum(pick => pick.Cost);
+            }
+            catch (Exception e)
+            {
+                totalForAdditional = 0;
+            }
 
             decimal totalCost = totalForAdditional + amountForRecurring;
+
+            decimal totalForCompletedService;
+
+            try
+            {
+                totalForCompletedService = dbContext.PickUps
+                    .Where(pick => pick.CustomerId == customer.CustomerId && pick.Completed == true)
+                    .Sum(pick => pick.Cost);
+            }
+            catch (Exception e)
+            {
+
+                totalForCompletedService = 0;
+            }
 
             CustomerOwesForThisMonthViewModel model = new CustomerOwesForThisMonthViewModel
             {

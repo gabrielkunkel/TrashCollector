@@ -4,7 +4,7 @@
     ViewBag.Title = "OwesThisMonth";
 }
 
-<h2>You'll Owe For This Month</h2>
+<h2>You will owe and owe for past service</h2>
 
 @Html.HiddenFor(model => model.CustomerId)
 <div>
@@ -18,7 +18,16 @@
         <dd>
             @Html.DisplayFor(model => model.OwesThisMonth)
         </dd>
+    </dl>
 
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bill)
+        </dd>
     </dl>
 </div>
 <p>

@@ -26,6 +26,9 @@
             @Html.DisplayNameFor(model => model.Customer.FirstName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Customer.Address.StreetAddress)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Scheduled)
         </th>
         <th>
@@ -47,34 +50,37 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Scheduled)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pending)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Completed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recurring)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Paid)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PickUpId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PickUpId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PickUpId })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Customer.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Customer.Address.StreetAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Scheduled)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pending)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Completed)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Recurring)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cost)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Paid)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.PickUpId }) |
+        @Html.ActionLink("Customer Details", "Details", new { id = item.PickUpId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.PickUpId })
+    </td>
+</tr>
 }
 
 </table>

@@ -14,14 +14,15 @@ namespace TrashCollector.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: PickUpModels
-        public ActionResult Index(string Id)
+        public ActionResult Index()
         {
-            Guid employeeGuid = Guid.Parse(Id);
-            DateTime todayDate = DateTime.Today;
+            var userId = User.Identity.GetUserId();
 
             EmployeeModel employee = db.Employees
-                .Where(emp => emp.EmployeeId == employeeGuid)
+                .Where(emp => emp.ApplicationId == userId)
                 .FirstOrDefault();
+
+            DateTime todayDate = DateTime.Today;
 
             var pickUps = db.PickUps
                 .Include(p => p.Customer)
@@ -55,13 +56,6 @@ namespace TrashCollector.Controllers
             int daysToAdd = ((int)day - (int)start.DayOfWeek + 7) % 7;
             return start.AddDays(daysToAdd);
         }
-
-        // todo: add a query string after Id string with todayDate set to chosen day
-
-        // todo: add action links for each day
-
-
-
 
         // GET: PickUpModels/Details/5
         public ActionResult Details(Guid? id)
@@ -131,7 +125,14 @@ namespace TrashCollector.Controllers
             {
                 db.Entry(pickUpModel).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                var userId = User.Identity.GetUserId();
+
+                EmployeeModel employee = db.Employees
+                    .Where(emp => emp.ApplicationId == userId)
+                    .FirstOrDefault();
+
+                return RedirectToAction("Index", new { Id = employee.EmployeeId });
             }
             ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName", pickUpModel.CustomerId);
             return View(pickUpModel);
