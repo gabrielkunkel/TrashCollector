@@ -67,7 +67,12 @@ namespace TrashCollector.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PickUpModel pickUpModel = db.PickUps.Find(id);
+            PickUpModel pickUpModel = db.PickUps
+                .Include(pick => pick.Customer)
+                .Include(pick => pick.Customer.Address)
+                .Where(pick => pick.PickUpId == id)
+                .SingleOrDefault();
+
             if (pickUpModel == null)
             {
                 return HttpNotFound();
